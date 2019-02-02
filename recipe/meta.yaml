@@ -2,7 +2,7 @@
 {% set version = "3.4.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}-base
   version: {{ version }}
 
 source:
@@ -10,7 +10,7 @@ source:
   sha256: 3486234150c8967f1057019f6e2929ed6cb9a79f2a0d8d4b6b950eede4ddc048
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
@@ -24,13 +24,27 @@ requirements:
     - awkward >=0.8.0
     - uproot-methods >=0.4.0
     - cachetools
-    - backports.lzma  # [py27]
-    - lz4
-    - xrootd  # [unix]
 
 test:
   imports:
-    - uproot_methods
+    - {{ name }}
+
+outputs:
+  - name: {{ name }}-base
+
+  - name: {{ name }}
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - backports.lzma  # [py27]
+        - lz4
+        - requests
+        - xrootd  # [unix]
+    test:
+      imports:
+        - {{ name }}
 
 about:
   home: https://github.com/scikit-hep/{{ name }}
