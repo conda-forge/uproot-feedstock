@@ -38,6 +38,7 @@ outputs:
         - python
       run:
         - python
+        - {{ pin_subpackage(name+'-base', exact=True) }}
         - backports.lzma  # [py27]
         - lz4
         - requests
