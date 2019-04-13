@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "3.4.19" %}
+{% set version = "3.5.0" %}
 
 package:
   name: {{ name }}-base
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 1df24d1f193b044cc4d6ef98e183a853655b568b7b15173d88b0d2a79e1226da
+  sha256: ca14166176225f03cce2eae98bc1ca29fae6c659e0bb3ee68f433364ccac8607
 
 build:
   number: 0
@@ -21,8 +21,8 @@ requirements:
   run:
     - python
     - numpy >=1.13.1
-    - awkward >=0.8.0
-    - uproot-methods >=0.4.0
+    - awkward >=0.9.0
+    - uproot-methods >=0.5.0
     - cachetools
 
 test:
@@ -45,7 +45,7 @@ outputs:
         - xrootd  # [unix]
     test:
       imports:
-        - {{ name }}
+        - uproot
 
 about:
   home: https://github.com/scikit-hep/{{ name }}
