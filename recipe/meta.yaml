@@ -45,7 +45,7 @@ outputs:
         - xrootd  # [unix]
     test:
       imports:
-        - {{ name }}
+        - uproot
 
 about:
   home: https://github.com/scikit-hep/{{ name }}
