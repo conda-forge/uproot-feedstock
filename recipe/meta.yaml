@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "3.7.2" %}
+{% set version = "3.8.0" %}
 
 package:
   name: {{ name }}-base
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 36c29a8b26a162b022a4cfe415ba1468f320a0df534baaef4fb755a0040cbfb8
+  sha256: fc22306022685521fe23f0a0f0954810820826b74c25c491bca9b45aaaa7401b
 
 build:
   number: 0
@@ -21,7 +21,7 @@ requirements:
   run:
     - python
     - numpy >=1.13.1
-    - awkward >=0.11.0
+    - awkward >=0.12.0
     - uproot-methods >=0.7.0
     - cachetools
 
