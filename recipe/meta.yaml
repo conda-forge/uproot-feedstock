@@ -41,7 +41,7 @@ outputs:
         - {{ pin_subpackage(name+'-base', exact=True) }}
         - backports.lzma  # [py27]
         - lz4
-        - xxhash
+        - python-xxhash
         - requests
         - xrootd  # [unix]
     test:
