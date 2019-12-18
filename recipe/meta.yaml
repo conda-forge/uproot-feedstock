@@ -44,6 +44,7 @@ outputs:
         - python-xxhash
         - requests
         - xrootd  # [unix]
+        - zstandard
     test:
       imports:
         - uproot
