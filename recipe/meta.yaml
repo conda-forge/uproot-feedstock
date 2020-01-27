@@ -10,7 +10,7 @@ source:
   sha256: ed03f35045cefbfe4825e33ce430dce9d1ec0280274e579f18d33bb7da96ded4
 
 build:
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
@@ -26,8 +26,14 @@ requirements:
     - cachetools
 
 test:
+  source_files:
+    - tests
+  requires:
+    - pytest
   imports:
-    - {{ name }}
+    - uproot
+  command:
+    - pytest .
 
 outputs:
   - name: {{ name }}-base
@@ -46,8 +52,14 @@ outputs:
         - xrootd  # [unix]
         - zstandard
     test:
+      source_files:
+        - tests
+      requires:
+        - pytest
       imports:
         - uproot
+      command:
+        - pytest .
 
 about:
   home: https://github.com/scikit-hep/{{ name }}
