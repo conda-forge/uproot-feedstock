@@ -1,0 +1,61 @@
+From 0fb21910fbe536b5c388d2c220f8c829321f42f3 Mon Sep 17 00:00:00 2001
+From: Chris Burr <christopher.burr@cern.ch>
+Date: Mon, 27 Jan 2020 08:12:25 +0100
+Subject: [PATCH] Allow tests to be ran with minimal dependencies
+
+---
+ tests/test_compression.py | 8 +++++---
+ tests/test_versions.py    | 6 ++++--
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_compression.py b/tests/test_compression.py
+index fbf1e92..2964b3d 100644
+--- a/tests/test_compression.py
++++ b/tests/test_compression.py
+@@ -2,15 +2,17 @@
+ 
+ # BSD 3-Clause License; see https://github.com/scikit-hep/uproot/blob/master/LICENSE
+ 
++import pytest
+ try:
+     import lzma
+ except ImportError:
+-    from backports import lzma
+-import lz4
+-import zstandard
++    lzma = pytest.importorskip('backports.lzma')
++lz4 = pytest.importorskip('lz4')
++zstandard = pytest.importorskip('zstandard')
+ 
+ import uproot
+ 
++
+ class Test(object):
+     def test_compression_identity(self):
+         assert uproot.open("tests/samples/Zmumu-zlib.root").compression.algoname == "zlib"
+diff --git a/tests/test_versions.py b/tests/test_versions.py
+index e31526f..eb77237 100644
+--- a/tests/test_versions.py
++++ b/tests/test_versions.py
+@@ -2,14 +2,16 @@
+ 
+ # BSD 3-Clause License; see https://github.com/scikit-hep/uproot/blob/master/LICENSE
+ 
++import pytest
+ try:
+     import lzma
+ except ImportError:
+-    from backports import lzma
+-import lz4
++    lzma = pytest.importorskip('backports.lzma')
++lz4 = pytest.importorskip('lz4')
+ 
+ import uproot
+ 
++
+ class Test(object):
+     sample = {
+         b"n": [0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4],
+-- 
+2.21.0
+
