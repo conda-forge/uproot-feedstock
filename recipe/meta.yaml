@@ -32,7 +32,7 @@ test:
     - pytest
   imports:
     - uproot
-  command:
+  commands:
     - pytest .
 
 outputs:
@@ -58,7 +58,7 @@ outputs:
         - pytest
       imports:
         - uproot
-      command:
+      commands:
         - pytest .
 
 about:
