@@ -8,8 +8,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: ed03f35045cefbfe4825e33ce430dce9d1ec0280274e579f18d33bb7da96ded4
-  patches:
-    - 0001-Allow-tests-to-be-ran-with-minimal-dependencies.patch
 
 build:
   number: 1
