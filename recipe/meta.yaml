@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "3.11.3" %}
+{% set version = "3.11.4" %}
 
 package:
   name: {{ name }}-base
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 05c7d0a9e82db91f3e51d3d37e675d78b5a78c2765e9001ee8939600769f3ba7
+  sha256: 9dbdb88e203f050f6ebb359e1d674023208ef64ace68a04a729efd6a0c113dbf
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
@@ -68,7 +68,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'ROOT I/O in pure Python and Numpy.'
+  summary: ROOT I/O in pure Python and Numpy.
   description: |
     uproot (originally μproot, for “micro-Python ROOT”) is a reader and a writer
     of the ROOT file format using only Python and Numpy. Unlike the standard C++
