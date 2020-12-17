@@ -8,13 +8,13 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: "afe977e1b123676e121f65512816b9f4612469fec1a73aa6f6cd0e41e33d5920"
+  patches:
+    - uproot-xxx-setupcfg.patch
 
 build:
   number: 0
   noarch: python
-  script:
-  - export PYTHONIOENCODING=utf8
-  - {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
