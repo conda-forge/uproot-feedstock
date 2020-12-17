@@ -1,67 +1,35 @@
 {% set name = "uproot" %}
-{% set version = "3.13.0" %}
+{% set version = "4.0.0" %}
 
 package:
-  name: {{ name }}-base
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 93075ad6a6a1bacb9687926e41101f3ca3efde05d10ee83f4538e789a513656c
+  sha256: "afe977e1b123676e121f65512816b9f4612469fec1a73aa6f6cd0e41e33d5920"
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python
     - pip
-    - pytest-runner
+    - python >=3.5
   run:
-    - python
-    - numpy >=1.13.1
-    - awkward >=0.12.0,<1.0
-    - uproot-methods >=0.7.0
-    - cachetools
+    - numpy
+    - python >=3.5
 
 test:
-  source_files:
-    - tests
-  requires:
-    - pytest
-    - mock
   imports:
     - uproot
+    - uproot.behaviors
   commands:
-    - pytest .
-
-outputs:
-  - name: {{ name }}-base
-
-  - name: {{ name }}
-    requirements:
-      host:
-        - python
-      run:
-        - python
-        - {{ pin_subpackage(name+'-base', exact=True) }}
-        - backports.lzma  # [py27]
-        - lz4
-        - python-xxhash
-        - requests
-        - xrootd  # [unix]
-        - zstandard
-    test:
-      source_files:
-        - tests
-      requires:
-        - pytest
-        - mock
-      imports:
-        - uproot
-      commands:
-        - pytest .
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/scikit-hep/{{ name }}
@@ -81,5 +49,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - lgray
     - chrisburr
     - jpivarski
+    - henryiii
