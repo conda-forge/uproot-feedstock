@@ -1,85 +1,82 @@
 {% set name = "uproot" %}
-{% set version = "3.13.0" %}
+{% set version = "4.0.0" %}
 
 package:
-  name: {{ name }}-base
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 93075ad6a6a1bacb9687926e41101f3ca3efde05d10ee83f4538e789a513656c
+  sha256: "afe977e1b123676e121f65512816b9f4612469fec1a73aa6f6cd0e41e33d5920"
+  patches:
+    - uproot-4.0.1-setupcfg.patch
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  noarch: python
 
 requirements:
   host:
-    - python
-    - pip
-    - pytest-runner
+    - python >=3.5
   run:
-    - python
-    - numpy >=1.13.1
-    - awkward >=0.12.0,<1.0
-    - uproot-methods >=0.7.0
-    - cachetools
+    - python >=3.5
+    - uproot-base
+    # Compression
+    - lz4
+    - zstandard
+    - python-xxhash
+    # Other common requirements
+    - xrootd
+    - awkward >=1
 
 test:
-  source_files:
-    - tests
-  requires:
-    - pytest
-    - mock
   imports:
     - uproot
+    - uproot.behaviors
   commands:
-    - pytest .
+    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'
 
 outputs:
-  - name: {{ name }}-base
-
-  - name: {{ name }}
+  - name: uproot-base
+    build:
+      noarch: python
+      script:
+        - {{ PYTHON }} -m pip install . -vv
     requirements:
       host:
-        - python
+        - pip
+        - numpy
+        - python >=3.5
       run:
-        - python
-        - {{ pin_subpackage(name+'-base', exact=True) }}
-        - backports.lzma  # [py27]
-        - lz4
-        - python-xxhash
-        - requests
-        - xrootd  # [unix]
-        - zstandard
+        - numpy
+        - python >=3.5
     test:
-      source_files:
-        - tests
-      requires:
-        - pytest
-        - mock
       imports:
         - uproot
+        - uproot.behaviors
       commands:
-        - pytest .
+        - pip check
+      requires:
+        - pip
 
 about:
-  home: https://github.com/scikit-hep/{{ name }}
+  home: https://github.com/scikit-hep/uproot
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE
   summary: ROOT I/O in pure Python and Numpy.
   description: |
-    uproot (originally μproot, for “micro-Python ROOT”) is a reader and a writer
+    uproot (originally μproot, for "micro-Python ROOT") is a reader and a writer
     of the ROOT file format using only Python and Numpy. Unlike the standard C++
     ROOT implementation, uproot is only an I/O library, primarily intended to
     stream data into machine learning libraries in Python. Unlike PyROOT and
     root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls
     to rapidly cast data blocks in the ROOT file as Numpy arrays.
-  dev_url: https://github.com/scikit-hep/{{ name }}
-  doc_url: https://{{ name }}.readthedocs.io/en/latest/
+  dev_url: https://github.com/scikit-hep/uproot
+  doc_url: https://uproot.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
+    - lgray
     - chrisburr
     - jpivarski
+    - henryiii
