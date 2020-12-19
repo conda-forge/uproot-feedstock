@@ -14,29 +14,54 @@ source:
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - pip
     - python >=3.5
   run:
-    - numpy
     - python >=3.5
+    - uproot-base
+    # Compression
+    - lz4
+    - zstandard
+    - python-xxhash
+    # Other common requirements
+    - xrootd
+    - awkward >=1
 
 test:
   imports:
     - uproot
     - uproot.behaviors
   commands:
-    - pip check
-  requires:
-    - pip
+    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'
+
+outputs:
+  - name: uproot-base
+    build:
+      noarch: python
+      script:
+        - {{ PYTHON }} -m pip install . -vv
+    requirements:
+      host:
+        - pip
+        - numpy
+        - python >=3.5
+      run:
+        - numpy
+        - python >=3.5
+    test:
+      imports:
+        - uproot
+        - uproot.behaviors
+      commands:
+        - pip check
+      requires:
+        - pip
 
 about:
-  home: https://github.com/scikit-hep/{{ name }}
+  home: https://github.com/scikit-hep/uproot
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE
   summary: ROOT I/O in pure Python and Numpy.
   description: |
@@ -46,8 +71,8 @@ about:
     stream data into machine learning libraries in Python. Unlike PyROOT and
     root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls
     to rapidly cast data blocks in the ROOT file as Numpy arrays.
-  dev_url: https://github.com/scikit-hep/{{ name }}
-  doc_url: https://{{ name }}.readthedocs.io/en/latest/
+  dev_url: https://github.com/scikit-hep/uproot
+  doc_url: https://uproot.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
