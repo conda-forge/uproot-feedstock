@@ -33,7 +33,7 @@ test:
     - uproot
     - uproot.behaviors
   commands:
-    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'  # [not win]
+    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'  # [not win and python_impl != 'pypy']
 
 outputs:
   - name: uproot-base
