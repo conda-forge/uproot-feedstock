@@ -12,21 +12,20 @@ source:
     - uproot-4.0.1-setupcfg.patch
 
 build:
-  number: 0
-  noarch: python
+  number: 1
 
 requirements:
   host:
-    - python >=3.5
+    - python
   run:
-    - python >=3.5
+    - python
     - uproot-base
     # Compression
     - lz4
     - zstandard
     - python-xxhash
     # Other common requirements
-    - xrootd
+    - xrootd  # [not win]
     - awkward >=1
 
 test:
@@ -58,6 +57,8 @@ outputs:
         - pip check
       requires:
         - pip
+
+  - name: uproot
 
 about:
   home: https://github.com/scikit-hep/uproot
