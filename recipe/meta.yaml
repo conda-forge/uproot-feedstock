@@ -26,14 +26,14 @@ requirements:
     - python-xxhash
     # Other common requirements
     - xrootd  # [not win]
-    - awkward >=1
+    - awkward >=1  # [python_impl != 'pypy']
 
 test:
   imports:
     - uproot
     - uproot.behaviors
   commands:
-    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'
+    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'  # [not win]
 
 outputs:
   - name: uproot-base
