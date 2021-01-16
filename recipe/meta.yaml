@@ -8,8 +8,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: e93ad76f71e6c6033ce062b1c0690eddc9103fd694b641467de531f665eddf11
-  patches:
-    - uproot-4.0.1-setupcfg.patch
 
 build:
   number: 0
