@@ -21,6 +21,8 @@ target_platform:
 xrootd:
 - '5'
 zip_keys:
+- - cdt_name
+  - docker_image
 - - python
   - numpy
   - python_impl
