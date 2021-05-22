@@ -25,6 +25,8 @@ requirements:
     # Other common requirements
     - xrootd  # [not win]
     - awkward >=1  # [python_impl != 'pypy']
+    # Needed at runtime for pkg_resources
+    - setuptools
 
 test:
   imports:
