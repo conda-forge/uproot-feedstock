@@ -23,7 +23,7 @@ requirements:
     - zstandard
     - python-xxhash
     # Other common requirements
-    - xrootd >=5.2  # [not win]
+    - xrootd  # [not win]
     - awkward >=1  # [python_impl != 'pypy']
     # Needed at runtime for pkg_resources
     - setuptools
