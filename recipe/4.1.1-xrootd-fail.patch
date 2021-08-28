@@ -1,0 +1,32 @@
+From af8fe9b0b049e9fbba9491c4e6b70b0d1ea5cf21 Mon Sep 17 00:00:00 2001
+From: Jim Pivarski <jpivarski@gmail.com>
+Date: Fri, 27 Aug 2021 17:28:06 -0500
+Subject: [PATCH] The 'xrootd_handler' key must be set regardless of whether
+ there's a warning about its choice of value.
+
+---
+ src/uproot/reading.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/uproot/reading.py b/src/uproot/reading.py
+index 25645e09..6744242d 100644
+--- a/src/uproot/reading.py
++++ b/src/uproot/reading.py
+@@ -172,12 +172,13 @@ def __getitem__(self, where):
+                     "XRootD {0} is not fully supported; ".format(dist.version)
+                     + """either upgrade to 5.2.0+ or set
+ 
+-                open.defaults["xrootd_handler"] = uproot.MultithreadedXRootDSource
+-            """
++    open.defaults["xrootd_handler"] = uproot.MultithreadedXRootDSource
++"""
+                 )
+                 warnings.warn(message, FutureWarning)
+-            else:
+-                self["xrootd_handler"] = uproot.source.xrootd.XRootDSource
++
++            # The key should still be set, regardless of whether we see the warning.
++            self["xrootd_handler"] = uproot.source.xrootd.XRootDSource
+ 
+         return dict.__getitem__(self, where)
+ 
