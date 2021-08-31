@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "4.1.0" %}
+{% set version = "4.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ee99c540dbc6b6159f0ade39de2e40820fa1fd6e13c91ef58a5e462fcf737f29
-  patches:
-    - 4.1.1-xrootd-fail.patch
+  sha256: beecf0fb5115928e201e131f770dcca0e0e0100a99d5b9b1d22d56d56ddf9d04
 
 build:
   number: 0
