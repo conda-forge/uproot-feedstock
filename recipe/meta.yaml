@@ -10,14 +10,14 @@ source:
   sha256: beecf0fb5115928e201e131f770dcca0e0e0100a99d5b9b1d22d56d56ddf9d04
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   host:
     - python
   run:
     - python
-    - uproot-base
+    - {{ pin_subpackage('uproot-base', exact=True) }}
     # Compression
     - lz4
     - zstandard
