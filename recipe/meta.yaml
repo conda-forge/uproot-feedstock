@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "4.1.3" %}
+{% set version = "4.1.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 54354b6690ccdd72441e4ff0575d386ebcb38f85ef453e8d2553b570e1c8fde1
+  sha256: 3c6fb3bbf0e4867e178e112390e0073c8b2e9f16c78b5ebaa8eea4068e192083
 
 build:
   number: 0
@@ -33,7 +33,7 @@ test:
     - uproot
     - uproot.behaviors
   commands:
-    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'  # [not (win or aarch64) and python_impl != 'pypy']
+    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'  # [not (win or aarch64 or ppc64le) and python_impl != 'pypy']
 
 outputs:
   - name: uproot-base
