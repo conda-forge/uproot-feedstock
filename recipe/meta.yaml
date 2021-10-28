@@ -24,7 +24,7 @@ requirements:
     - python-xxhash
     # Other common requirements
     - xrootd  # [not win]
-    - awkward >=1  # [python_impl != 'pypy']
+    - awkward >=1,<2  # [python_impl != 'pypy']
     # Needed at runtime for pkg_resources
     - setuptools
 
@@ -61,7 +61,7 @@ outputs:
   - name: uproot
 
 about:
-  home: https://github.com/scikit-hep/uproot
+  home: https://github.com/scikit-hep/uproot4
   license: BSD-3-Clause
   license_file: LICENSE
   summary: ROOT I/O in pure Python and Numpy.
@@ -72,7 +72,7 @@ about:
     stream data into machine learning libraries in Python. Unlike PyROOT and
     root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls
     to rapidly cast data blocks in the ROOT file as Numpy arrays.
-  dev_url: https://github.com/scikit-hep/uproot
+  dev_url: https://github.com/scikit-hep/uproot4
   doc_url: https://uproot.readthedocs.io/en/latest/
 
 extra:
