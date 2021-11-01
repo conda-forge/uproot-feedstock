@@ -44,7 +44,7 @@ outputs:
     requirements:
       host:
         - pip
-        - numpy
+        - numpy >=1.16
         - python >=3.5
       run:
         - numpy
