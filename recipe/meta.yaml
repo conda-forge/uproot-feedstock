@@ -30,6 +30,8 @@ requirements:
 
 test:
   imports:
+    # Workaround for https://github.com/pypa/setuptools/issues/3165
+    - setuptools  # [osx and python_impl == 'pypy']
     - uproot
     - uproot.behaviors
   commands:
