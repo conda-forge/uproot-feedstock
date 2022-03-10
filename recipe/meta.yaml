@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "4.2.0" %}
+{% set version = "4.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 36b74b1559a2dbef671753b4f4bb8c401035b992b641fad09e05474d3b9b1b30
+  sha256: 6a001eba57227af4375c059eef8fced210acdedb5115d4f324330c501dae958b
 
 build:
   number: 0
@@ -30,6 +30,8 @@ requirements:
 
 test:
   imports:
+    # Workaround for https://github.com/pypa/setuptools/issues/3165
+    - setuptools  # [osx and python_impl == 'pypy']
     - uproot
     - uproot.behaviors
   commands:
