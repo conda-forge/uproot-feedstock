@@ -24,14 +24,12 @@ requirements:
     - python-xxhash
     # Other common requirements
     - xrootd  # [not win]
-    - awkward >=1,<2  # [python_impl != 'pypy']
+    - awkward >=1,<2
     # Needed at runtime for pkg_resources
     - setuptools
 
 test:
   imports:
-    # Workaround for https://github.com/pypa/setuptools/issues/3165
-    - setuptools  # [osx and python_impl == 'pypy']
     - uproot
     - uproot.behaviors
   commands:
@@ -45,15 +43,15 @@ outputs:
         - {{ PYTHON }} -m pip install . -vv
     requirements:
       build:
-        - python >=3.5                           # [build_platform != target_platform]
+        - python >=3.6                           # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
       host:
         - pip
         - numpy >=1.16
-        - python >=3.5
+        - python >=3.6
       run:
         - numpy
-        - python >=3.5
+        - python >=3.6
     test:
       imports:
         - uproot
