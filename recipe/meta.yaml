@@ -86,3 +86,4 @@ extra:
     - chrisburr
     - jpivarski
     - henryiii
+    - conda-forge/scikit-hep
