@@ -340,6 +340,7 @@ Feedstock Maintainers
 * [@chrisburr](https://github.com/chrisburr/)
 * [@conda-forge/scikit-hep](https://github.com/conda-forge/scikit-hep/)
 * [@henryiii](https://github.com/henryiii/)
+* [@ioanaif](https://github.com/ioanaif/)
 * [@jpivarski](https://github.com/jpivarski/)
 * [@lgray](https://github.com/lgray/)
 
