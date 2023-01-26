@@ -87,3 +87,5 @@ extra:
     - jpivarski
     - henryiii
     - agoose77
+    - ioanaif
+    - conda-forge/scikit-hep
