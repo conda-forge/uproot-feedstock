@@ -24,7 +24,7 @@ requirements:
     - python-xxhash
     # Other common requirements
     - xrootd  # [not win]
-    - awkward >=1,<2  # [python_impl != 'pypy']
+    - awkward >=2,<3  # [python_impl != 'pypy']
     # Needed at runtime for pkg_resources
     - setuptools
 
