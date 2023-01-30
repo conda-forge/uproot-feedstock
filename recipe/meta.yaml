@@ -10,10 +10,9 @@ source:
   sha256: 734f70d9e44f964d84bbe3de581aa4a96585be09049b3ad104623390d10ac828
 
 build:
-  noarch: python
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . -vv
   number: 0
-  script:
-    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -29,7 +28,7 @@ requirements:
     # Other common requirements
     - xrootd  # [not win]
     - awkward >=2.0.0
-    - importlib-metadata
+    - importlib-metadata  # [py<38]
     - numpy
     - packaging
 
