@@ -16,7 +16,7 @@ build:
 
 requirements:
   host:
-    - python
+    - python                                 # [build_platform != target_platform]
     - hatchling >1.10.0
     - pip
   run:
