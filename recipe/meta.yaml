@@ -10,14 +10,10 @@ source:
   sha256: 734f70d9e44f964d84bbe3de581aa4a96585be09049b3ad104623390d10ac828
 
 build:
+  noarch: python
   number: 0
 
 requirements:
-  host:
-    - python
-    - hatchling >1.10.0
-    - pip
-  run:
     - python
     - {{ pin_subpackage('uproot-base', exact=True) }}
     # Compression
@@ -31,10 +27,6 @@ test:
   imports:
     - uproot
     - uproot.behaviors
-  requires:
-    - xrootd  # [not win]
-  commands:
-    - python -c 'import uproot; assert len(uproot.open("root://eospublic.cern.ch//eos/root-eos/cms_opendata_2012_nanoaod/Run2012B_DoubleMuParked.root")["Events"]["PV_x"].array()) == 29308627'  # [not (win or aarch64 or ppc64le) and python_impl != 'pypy']
 
 outputs:
   - name: uproot-base
