@@ -13,22 +13,6 @@ build:
   noarch: python
   number: 0
 
-requirements:
-  run:
-    - python
-    - {{ pin_subpackage('uproot-base', exact=True) }}
-    # Compression
-    - lz4
-    - zstandard
-    - python-xxhash
-    # Other common requirements
-    - awkward >=2.0.0
-    
-test:
-  imports:
-    - uproot
-    - uproot.behaviors
-
 outputs:
   - name: uproot-base
     build:
@@ -55,6 +39,23 @@ outputs:
         - pip
 
   - name: uproot
+    build:
+      noarch: python
+  
+    requirements:
+      run:
+        - {{ pin_subpackage('uproot-base', exact=True) }}
+        # Compression
+        - lz4
+        - zstandard
+        - python-xxhash
+        # Other common requirements
+        - awkward >=2.0.0
+      
+    test:
+      imports:
+        - uproot
+        - uproot.behaviors
 
 about:
   home: https://github.com/scikit-hep/uproot5
