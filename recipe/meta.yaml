@@ -14,6 +14,7 @@ build:
   number: 0
 
 requirements:
+  run:
     - python
     - {{ pin_subpackage('uproot-base', exact=True) }}
     # Compression
