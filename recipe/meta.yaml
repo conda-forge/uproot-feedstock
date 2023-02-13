@@ -18,7 +18,7 @@ outputs:
     build:
       noarch: python
       script:
-        - build.sh
+        - python -m pip install . --no-deps -vv
     requirements:
       host:
         - python >=3.7
