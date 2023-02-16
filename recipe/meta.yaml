@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "5.0.2" %}
+{% set version = "5.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 734f70d9e44f964d84bbe3de581aa4a96585be09049b3ad104623390d10ac828
+  sha256: a4ab3f2ea0b98746f601d43115a64b36f9c2145e9793da1e1cd9aaca72f311ab
 
 build:
   number: 0
@@ -41,7 +41,7 @@ outputs:
   - name: uproot
     build:
       noarch: python
-  
+
     requirements:
       run:
         - {{ pin_subpackage('uproot-base', exact=True) }}
@@ -50,7 +50,6 @@ outputs:
         - zstandard
         - python-xxhash
         # Other common requirements
-      
     test:
       imports:
         - uproot
