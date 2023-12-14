@@ -28,7 +28,8 @@ outputs:
         - importlib-metadata
         - numpy
         - packaging
-        - awkward >=2.0.0
+        - awkward >=2.4.6
+        - fsspec
     test:
       imports:
         - uproot
