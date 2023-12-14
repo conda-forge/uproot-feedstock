@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "5.1.2" %}
+{% set version = "5.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f69ee9381243cb0fea58c01a94a8a7abee29de3b67cdb9c9c9cccdd2caccd934
+  sha256: d5ec77085006c44ba7c56da153f56e1b4db38d589493be625a7e4e38279e3494
 
 build:
   number: 0
@@ -28,7 +28,8 @@ outputs:
         - importlib-metadata
         - numpy
         - packaging
-        - awkward >=2.0.0
+        - awkward >=2.4.6
+        - fsspec
     test:
       imports:
         - uproot
