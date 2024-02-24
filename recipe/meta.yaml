@@ -25,7 +25,6 @@ outputs:
         - pip
       run:
         - python >=3.8
-        - importlib-metadata
         - numpy
         - packaging
         - awkward >=2.4.6
