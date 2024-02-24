@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "5.2.2" %}
+{% set version = "5.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ce6abba7efaae35d891f15ad1757ece63620f0db12260403fbd0339e41951fc1
+  sha256: 732f69298406753880982044605b5884cbd723821cb83158a7a58c238ac01f0d
 
 build:
   number: 0
@@ -20,16 +20,17 @@ outputs:
         - python -m pip install . --no-deps -vv
     requirements:
       host:
-        - python >=3.7
+        - python >=3.8
         - hatchling >1.10.0
         - pip
       run:
-        - python >=3.7
-        - importlib-metadata
+        - python >=3.8
         - numpy
         - packaging
         - awkward >=2.4.6
         - fsspec
+        - cramjam >=2.5.0
+        - typing_extensions >=4.1.0
     test:
       imports:
         - uproot
@@ -47,8 +48,6 @@ outputs:
       run:
         - {{ pin_subpackage('uproot-base', exact=True) }}
         # Compression
-        - lz4
-        - zstandard
         - python-xxhash
         # Other common requirements
     test:
