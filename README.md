@@ -158,7 +158,7 @@ Feedstock Maintainers
 
 * [@agoose77](https://github.com/agoose77/)
 * [@chrisburr](https://github.com/chrisburr/)
-* [@conda-forge/scikit-hep](https://github.com/conda-forge/scikit-hep/)
+* [@conda-forge/scikit-hep](https://github.com/orgs/conda-forge/teams/scikit-hep/)
 * [@henryiii](https://github.com/henryiii/)
 * [@ioanaif](https://github.com/ioanaif/)
 * [@jpivarski](https://github.com/jpivarski/)
