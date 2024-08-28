@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "5.3.11" %}
+{% set version = "5.3.12" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 24729b83797cdf5ac30d9851d7549a94d833f63d7906dfbf055096de514cb215
+  sha256: 29000deb55f05461e7bcde9664d75011c26eb9a14d90b35edf2c5c3637d9abbc
 
 build:
   number: 0
