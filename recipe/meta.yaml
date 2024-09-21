@@ -31,6 +31,7 @@ outputs:
         - awkward >=2.4.6
         - fsspec
         - cramjam >=2.5.0
+        - python-xxhash
         - typing_extensions >=4.1.0
     test:
       imports:
@@ -48,8 +49,6 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('uproot-base', exact=True) }}
-        # Compression
-        - python-xxhash
         # Other common requirements
     test:
       imports:
