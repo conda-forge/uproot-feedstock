@@ -11,7 +11,7 @@ Summary: ROOT I/O in pure Python and NumPy.
 
 Development: https://github.com/scikit-hep/uproot5
 
-Documentation: https://uproot.readthedocs.io/en/latest/
+Documentation: https://uproot.readthedocs.io/en/stable/
 
 uproot (originally μproot, for "micro-Python ROOT") is a reader and a writer
 of the ROOT file format using only Python and Numpy. Unlike the standard C++
@@ -40,7 +40,6 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-uproot-green.svg)](https://anaconda.org/conda-forge/uproot) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/uproot.svg)](https://anaconda.org/conda-forge/uproot) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/uproot.svg)](https://anaconda.org/conda-forge/uproot) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/uproot.svg)](https://anaconda.org/conda-forge/uproot) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-uproot--base-green.svg)](https://anaconda.org/conda-forge/uproot-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/uproot-base.svg)](https://anaconda.org/conda-forge/uproot-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/uproot-base.svg)](https://anaconda.org/conda-forge/uproot-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/uproot-base.svg)](https://anaconda.org/conda-forge/uproot-base) |
 
 Installing uproot
 =================
@@ -52,16 +51,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `uproot, uproot-base` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `uproot` can be installed with `conda`:
 
 ```
-conda install uproot uproot-base
+conda install uproot
 ```
 
 or with `mamba`:
 
 ```
-mamba install uproot uproot-base
+mamba install uproot
 ```
 
 It is possible to list all of the versions of `uproot` available on your platform with `conda`:
