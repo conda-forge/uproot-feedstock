@@ -6,54 +6,38 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/uproot-{{ version }}.tar.gz
   sha256: b8332c76baf3f327f84972a9b4d55a72c153f324331cdb85a1b0490bd14cf1b1
 
 build:
-  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
-outputs:
-  - name: uproot-base
-    build:
-      noarch: python
-      script:
-        - python -m pip install . --no-deps -vv
-    requirements:
-      host:
-        - python >=3.8
-        - hatchling >1.10.0
-        - hatch-vcs
-        - pip
-      run:
-        - python >=3.8
-        - numpy
-        - packaging
-        - awkward >=2.4.6
-        - fsspec
-        - cramjam >=2.5.0
-        - python-xxhash
-        - typing_extensions >=4.1.0
-    test:
-      imports:
-        - uproot
-        - uproot.behaviors
-      commands:
-        - pip check
-      requires:
-        - pip
+requirements:
+  host:
+    - python >=3.8
+    - hatchling >1.10.0
+    - hatch-vcs
+    - pip
+  run:
+    - python >=3.8
+    - awkward >=2.4.6
+    - cramjam >=2.5.0
+    - python-xxhash
+    - numpy
+    - fsspec
+    - packaging
+    - typing_extensions >=4.1.0  # python < 3.11
 
-  - name: uproot
-    build:
-      noarch: python
-
-    requirements:
-      run:
-        - {{ pin_subpackage('uproot-base', exact=True) }}
-        # Other common requirements
-    test:
-      imports:
-        - uproot
-        - uproot.behaviors
+test:
+  imports:
+    - uproot
+    - uproot.behaviors
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/scikit-hep/uproot5
@@ -68,7 +52,7 @@ about:
     root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls
     to rapidly cast data blocks in the ROOT file as Numpy arrays.
   dev_url: https://github.com/scikit-hep/uproot5
-  doc_url: https://uproot.readthedocs.io/en/latest/
+  doc_url: https://uproot.readthedocs.io/en/stable/
 
 extra:
   recipe-maintainers:
