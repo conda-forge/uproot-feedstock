@@ -1,5 +1,5 @@
 {% set name = "uproot" %}
-{% set version = "5.4.0" %}
+{% set version = "5.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/uproot-{{ version }}.tar.gz
-  sha256: b8332c76baf3f327f84972a9b4d55a72c153f324331cdb85a1b0490bd14cf1b1
+  sha256: af9556876cb134eb6b98f2792ef4c359eb8f414b179e781db5b199772d947213
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
