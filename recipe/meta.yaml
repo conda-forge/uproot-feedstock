@@ -12,16 +12,16 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
-    - hatchling >1.10.0
+    - python {{ python_min }}
+    - hatchling >=1.10.0
     - hatch-vcs
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - awkward >=2.4.6
     - cramjam >=2.5.0
     - python-xxhash
@@ -37,6 +37,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
