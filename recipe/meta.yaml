@@ -12,12 +12,12 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
-    - hatchling >1.10.0
+    - python 3.8
+    - hatchling >=1.10.0
     - hatch-vcs
     - pip
   run:
