@@ -1,28 +1,31 @@
-{% set name = "uproot" %}
-{% set version = "5.6.0" %}
-{% set python_min = "3.9" %}
+schema_version: 1
+
+context:
+  name: uproot
+  version: 5.6.0
+  python_min: 3.9
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/uproot-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/uproot-${{ version }}.tar.gz
   sha256: eb5c2add21090d4ba30c7c1b87d7678fac52473191285bec7d9a845b2018fc08
 
 build:
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - hatchling >=1.10.0
     - hatch-vcs
     - pip
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - awkward >=2.4.6
     - cramjam >=2.5.0
     - python-xxhash
@@ -31,18 +34,15 @@ requirements:
     - packaging
     - typing_extensions >=4.1.0  # python < 3.11
 
-test:
-  imports:
-    - uproot
-    - uproot.behaviors
-  commands:
-    - pip check
-  requires:
-    - python {{ python_min }}
-    - pip
+tests:
+  - python:
+      imports:
+        - uproot
+        - uproot.behaviors
+      pip_check: true
+      python_version: ${{ python_min }}.*
 
 about:
-  home: https://github.com/scikit-hep/uproot5
   license: BSD-3-Clause
   license_file: LICENSE
   summary: ROOT I/O in pure Python and NumPy.
@@ -53,8 +53,9 @@ about:
     stream data into machine learning libraries in Python. Unlike PyROOT and
     root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls
     to rapidly cast data blocks in the ROOT file as Numpy arrays.
-  dev_url: https://github.com/scikit-hep/uproot5
-  doc_url: https://uproot.readthedocs.io/en/stable/
+  homepage: https://github.com/scikit-hep/uproot5
+  repository: https://github.com/scikit-hep/uproot5
+  documentation: https://uproot.readthedocs.io/en/stable/
 
 extra:
   recipe-maintainers:
