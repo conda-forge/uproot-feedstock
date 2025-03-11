@@ -20,7 +20,6 @@ stream data into machine learning libraries in Python. Unlike PyROOT and
 root_numpy, uproot does not depend on C++ ROOT. Instead, it uses Numpy calls
 to rapidly cast data blocks in the ROOT file as Numpy arrays.
 
-
 Current build status
 ====================
 
