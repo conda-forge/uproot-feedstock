@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "5.7.7"
+  version: "5.7.8"
   python_min: '3.10'
 
 package:
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/u/uproot/uproot-${{ version }}.tar.gz
-  sha256: 64e9a86d1f71e051e2120eecd3870fa735625ebc8ad887595512e9002df12416
+  sha256: 773572233b7bc58b62e90678d28fc4a42ddca4675146afec0c7a182e0107d168
 
 build:
   number: 0
